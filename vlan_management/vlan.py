@@ -115,6 +115,10 @@ if __name__ == "__main__":
     # run the function, if arguments a given
     delete_parser.set_defaults(func=delete_vlan)
 
+    # if args is empty, print usage text
     args = parser.parse_args()
-    args.func(args)
-    
+    if not vars(args):
+        parser.print_usage()
+    else:
+        args.func(args)
+
